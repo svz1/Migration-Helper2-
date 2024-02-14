@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS to Azure Migration Helper</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    
+    <div class="header">
+        <h2>AWS to Azure Migration Helper</h2>
+        <P>Crafted By savio.sabu@soti.net</P>
+    </div>
+<form id="aws">
+    <label for="awstextbox">Enter the AWS ID</label>
+    <input type="text" id="awstextbox" placeholder="sxxxxxx">
+    <input type="text" id="azuretextbox" placeholder="axxxxxxx">
+    <button type="button" onclick="awsdisplaytext()">Display Text</button>
+
+</form>
+
+<!-- CX initial Mail-->
+<div class="cxmail">
+
+    <h3>Initial Mail to Customer</h3>
+    <p id="azuredisplaytext"></p>
+    <button onclick="copyText('azuredisplaytext')">Copy</button>
+</div>
+
+<!-- Cloud Team Init mail-->
+<div class="cloudinitial">
+    <h3>Cloud Team Migration Initiaion mail</h3>
+    <p id="awsdisplaytext"></p>
+    <button onclick="copyText('awsdisplaytext')">Copy</button>
+</div>
+
+<!-- Script 1 -->
+<div class="script1">
+    <h3>SSMS Script 1</h3>
+    <p id="script1"></p>
+    <button onclick="copyText('script1')">Copy</button>
+</div>
+
+<!-- Script 2
+<div class="script2">
+
+</div> -->
+
+<div class="complete">
+    <h3>Migration Complete Official mail</h3>
+    <p id="complete"></p>
+    <button onclick="copyText('complete')">Copy</button>
+</div>
+
+
+<div class="cxurl">
+    <h3>Cx Login Url Mail </h3>
+    <p id="cxurl"></p>
+    <button onclick="copyText('cxurl')">Copy</button>
+</div>
+
+
+<div class="cxidentity">
+    <h3>Cx Identity Configuration Mail</h3>
+    <p id="cxidentity"></p>
+    <button onclick="copyText('cxidentity')">Copy</button>
+</div>
+
+<!--
+<div class="tracker"></div> -->
+
+
+<a class="sticky-button" href="downloads.html">Powershell Links</a>
+
+
+
+
+
+<script>
+    // JavaScript function to read the value and display it
+    function awsdisplaytext() {
+      // Get the value from the text input
+      var awsid = document.getElementById("awstextbox").value;
+      var azureid = document.getElementById("azuretextbox").value;
+      document.getElementById("azuredisplaytext").innerText = "We will begin the AWS to Azure migration to your Cloud Instance " + awsid + " within the next five minutes. \nPlease note that your access to MobiControl, and device connectivity, will be impaired for the duration of the migration. \n I will keep you updated on any major changes and email you once the migration is complete.\nThank you for choosing SOTI.";
+      document.getElementById("awsdisplaytext").innerText = "Hi Team, All services have been stopped and the server has been put in maintenance for the server " + awsid + "\n Kindly proceed with migration";
+      document.getElementById("script1").innerText = "UPDATE dbo.devinfo \n set online = '0'\nwhere online = '1'; \n UPDATE dbo.ServerInfo\nset SrvStatus = '4';\nUPDATE dbo.MSInfo\nset Status = '4';\nGO"
+      document.getElementById("complete").innerText ="Hi All, \n We have performed the migration activity for the server " + awsid + " and it is completed successfully. \n The XSight and Mobicontrol has been installed successfully and all the services are running up and fine. \n I have also informed the customer about the activity completion and forwarded the SOTI Identity steps."
+      document.getElementById("cxurl").innerText ="Thank you for your patience and co-operation.\nThe migration has been completed with success and everything is working fine.\nKindly check at your end once and confirm back to us. \n Use this new URL -[https://"+azureid+".mobicontrol.cloud/MobiControl/WebConsole/?nosso=true]"
+      document.getElementById("cxidentity").innerText ="Thank you for your patience. \nThe migration has been completed with success and everything is working fine.\nKindly check at your end once and confirm back to us.\n If you have identity on your server, please check if you have followed these steps. \n To login to the new environment, please follow the steps below to update your SOTI Identity and access MobiControl:\n Login to Identity \n Click on the top left menu > Applications \n Select the current Identity App MobiControl-S115890 \n  Click on the Pencil icon below (Edit) \n Change Application Name to MobiControl-"+ azureid + "\n Update the FQDN part in SAML Audience, SAML Consumer URL, Recipient and Log Out URL from" + awsid + ".mobicontrolcloud.com to" + azureid +".mobicontrol.cloud \n This completes the Identity update \n If there is other IDP integration with MobiControl, you will need to upload the new MobiControl metadata to your IDP. \n Please let me know if you are facing any issues"
+    }
+
+    function copyText(elementId) {
+          var textToCopy = document.getElementById(elementId).innerText;
+
+          // Create a temporary input element and set its value
+          var tempInput = document.createElement("input");
+          tempInput.setAttribute("value", textToCopy);
+          document.body.appendChild(tempInput);
+
+          // Select and copy the text
+          tempInput.select();
+          document.execCommand("copy");
+
+          // Remove the temporary input element
+          document.body.removeChild(tempInput);
+          
+          // Optionally, provide user feedback (e.g., alert)
+
+          window.scrollBy(0, 200);
+          
+        }
+
+
+  </script>
+</body>
+</html>

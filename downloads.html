@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup File Downloads</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+
+    <div class="downloads">
+        <h2>Download Setup Files</h2>
+        
+        <!-- Hidden download links -->
+        <div class="download-link" onclick="copyText('link1')">
+            <p class="MobiControl 15.65">MobiControl 1565</p>
+            <input type="text" id="link1" value="https://downloads.soti.net/MobiControl/MobiControl1552Setup_1003_release.exe" readonly>
+        </div>
+
+        <div class="download-link" onclick="copyText('link2')">
+            <p class="file-name">Xsight 4.3.17.2</p>
+            <input type="text" id="link2" value="https://downloads.soti.net/SOTIXsight/SetupSOTIXSight-4.3.2.17.msi" readonly>
+        </div>
+
+        <!-- Add more download links as needed -->
+
+    </div>
+
+    <script>
+        function copyText(elementId) {
+            var textToCopy = document.getElementById(elementId).value;
+
+            // Create a temporary input element and set its value
+            var tempInput = document.createElement("input");
+            tempInput.setAttribute("value", textToCopy);
+            document.body.appendChild(tempInput);
+
+            // Select and copy the text
+            tempInput.select();
+            document.execCommand("copy");
+
+            // Remove the temporary input element
+            document.body.removeChild(tempInput);
+
+            // Optionally, provide user feedback (e.g., alert)
+            alert("Link copied to clipboard!");
+        }
+    </script>
+</body>
+</html>

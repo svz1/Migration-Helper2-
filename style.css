@@ -47,3 +47,7 @@ div{
     z-index: 1;
     padding: 100px 0
 }
+
+button a {
+    color: white;
+}

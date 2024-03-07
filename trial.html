@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="trial.css">
+</head>
+<body>
+   <form action="">
+    <label for="textinput">Enter the Details</label>
+    <input type="text" id="textinput" placeholder="AWS and Azure id">
+   <button type="button" onclick="extraction()">Display Text</button>
+</form>
+
+<div class="cxmail">
+
+    <h3>AWS ID</h3>
+    <p id="awsid"></p>
+    
+</div>
+
+<script>
+    
+    function extraction() {
+        var inputtext=document.getElementById("textinput").value ;
+        var words = inputtext.split(/\s+/) ; 
+        var swords= words.filter(function(word) {
+            return word.toLowerCase().startsWith('s') && /\d/.test(word.slice(1)) ; 
+        }) ; 
+        document.getElementById("awsid").textContent = "Words starting with 's': " + swords.join(', ');
+        
+        }
+    
+</script>
+
+</body>
+</html>

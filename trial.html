@@ -8,15 +8,16 @@
 </head>
 <body>
    <form action="">
-    <label for="textinput">Enter the Details</label>
+    <label for="textinput">Enter the Combined AWS and Azure ID</label>
     <input type="text" id="textinput" placeholder="AWS and Azure id">
    <button type="button" onclick="extraction()">Display Text</button>
 </form>
 
 <div class="cxmail">
 
-    <h3>AWS ID</h3>
+    <h3>AWS ID and azure iD </h3>
     <p id="awsid"></p>
+    <p id="azureid"></p>
     
 </div>
 
@@ -25,10 +26,25 @@
     function extraction() {
         var inputtext=document.getElementById("textinput").value ;
         var words = inputtext.split(/\s+/) ; 
+        var words2 = inputtext.split(/\s+/) ; 
         var swords= words.filter(function(word) {
             return word.toLowerCase().startsWith('s') && /\d/.test(word.slice(1)) ; 
         }) ; 
-        document.getElementById("awsid").textContent = "Words starting with 's': " + swords.join(', ');
+
+        var awords= words2.filter(function(word) {
+            return word.toLowerCase().startsWith('a') && /\d/.test(word.slice(1)) ; 
+        }) ; 
+
+        swords = swords.map(function (word) {
+            return word.slice(0, 7);
+        });
+
+        awords = awords.map(function (word) {
+            return word.slice(0, 8);
+        });
+
+        document.getElementById("awsid").textContent = swords.join(', ');
+        document.getElementById("azureid").textContent = awords.join(', ');
         
         }
     
